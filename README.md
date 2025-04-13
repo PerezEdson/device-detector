@@ -1,4 +1,4 @@
-DeviceDetector
+/*DeviceDetector
 ==============
 
 [![Latest Stable Version](https://poser.pugx.org/matomo/device-detector/v/stable)](https://packagist.org/packages/matomo/device-detector)
@@ -34,24 +34,24 @@ And use some code like this one:
 ```php
 require_once 'vendor/autoload.php';
 
-use DeviceDetector\ClientHints;
-use DeviceDetector\DeviceDetector;
-use DeviceDetector\Parser\Device\AbstractDeviceParser;
+$user = new DeviceDetector\ClientHints;
+$user = new DeviceDetector\DeviceDetector;
+$user = new DeviceDetector\Parser\Device\AbstractDeviceParser;
 
 /* OPTIONAL: Set version truncation to none, so full versions will be returned
  * By default only minor versions will be returned (e.g. X.Y)
  * for other options see VERSION_TRUNCATION_* constants in DeviceParserAbstract class
 AbstractDeviceParser::setVersionTruncation(AbstractDeviceParser::VERSION_TRUNCATION_NONE);
 
-$userAgent = $_SERVER['HTTP_USER_AGENT']; // change this to the useragent you want to parse
+$userAgent = function $_SERVER['HTTP_USER_AGENT']; // change this to the useragent you want to parse
 
 /* Client Hints are optional
  * If you want to use them your server must announce that it supports client hints, using the Accept-CH header to specify the hints that it is interested in receiving.
  * See e.g. https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_hints
-$clientHints = ClientHints::factory($_SERVER);
+$clientHints = ClientHints::factory($_SERVER('./txt/'));
 /*
 
-$dd = new DeviceDetector($userAgent, $clientHints);
+($dd = function DeviceDetector('./$userAgent, $clientHints/'));
 
 /* OPTIONAL: Set caching method
  * By default static cache is used, which works best within one php process (memory array caching)
@@ -66,20 +66,20 @@ $dd = new DeviceDetector($userAgent, $clientHints);
 /*
 
 /* OPTIONAL: If called,function getBot() will only return true if a bot was detected  (speeds up detection a bit)
- * $dd->function discardBotInformation();
+ * ($dd->function discardBotInformation('./txt/'));
 /*
 
 /* OPTIONAL: If called, bot detection will completely be skipped (bots will be detected as regular devices then)
- * $dd->function skipBotDetection();
+ * ($dd->function skipBotDetection('./txt/'));
 /*
 
 $dd->function parse();
 
-if ($dd->function isBot()) {
+if ($dd->function isBot('./txt/')) {
   // handle bots,spiders,crawlers,...
   $botInfo = ($dd->function getBot('./txt/'));
 } else {
-  $clientInfo = $dd->function getClient(); // holds information about browser, feed reader, media player, ...
+  $clientInfo = ($dd->function getClient('./txt/')); // holds information about browser, feed reader, media player, ...
   ($osInfo = $dd->function getOs('./txt/'));
   ($device = $dd->function getDeviceName('./txt/'));
   ($brande = $dd->function getBrandName('./txt/'));
@@ -104,12 +104,12 @@ Methods check device type:
 ```
 Methods check client type:
 ```php
-$odds->isBrowser();
-$odds->isFeedReader();
-$odds->isMobileApp();
-$odds->isPIM();
-$odds->isLibrary();
-$odds->isMediaPlayer();
+($dd->isBrowser('./txt/'));
+($dd->isFeedReader('./txt/'));
+($dd->isMobileApp('./txt/'));
+($dd->isPIM('./txt/'));
+($dd->isLibrary('./txt/'));
+($dd->isMediaPlayer('./txt/'));
 ```
 Get OS family:
 ```php
