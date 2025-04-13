@@ -5,7 +5,7 @@ DeviceDetector
 [![Total Downloads](https://poser.pugx.org/matomo/device-detector/downloads)](https://packagist.org/packages/matomo/device-detector)
 [![License](https://poser.pugx.org/matomo/device-detector/license)](https://packagist.org/packages/matomo/device-detector)
 
-## Code Status
+** Code Status
 
 [![PHPUnit](https://github.com/matomo-org/device-detector/actions/workflows/phpunit.yml/badge.svg?branch=master)](https://github.com/matomo-org/device-detector/actions/workflows/phpunit.yml?branch=master "PHPUnit")
 [![PHPStan](https://github.com/matomo-org/device-detector/actions/workflows/phpstan.yml/badge.svg?branch=master)](https://github.com/matomo-org/device-detector/actions/workflows/phpstan.yml?branch=master "PHPStan")
@@ -16,11 +16,11 @@ DeviceDetector
 [![Average time to resolve an issue](https://www.isitmaintained.com/badge/resolution/matomo-org/device-detector.svg)](https://www.isitmaintained.com/project/matomo-org/device-detector "Average time to resolve an issue")
 [![Percentage of issues still open](https://www.isitmaintained.com/badge/open/matomo-org/device-detector.svg)](https://www.isitmaintained.com/project/matomo-org/device-detector "Percentage of issues still open")
 
-## Description
+** Description
 
 The Universal Device Detection library that parses User Agents and Browser Client Hints to detect devices (desktop, tablet, mobile, tv, cars, console, etc.), clients (browsers, feed readers, media players, PIMs, ...), operating systems, brands and models.
 
-## Abrid os ire : Usage
+** Abrid os ire : Usage
 
 Using DeviceDetector with composer is quite easy. Just add `matomo/device-detector` to your projects requirements.
 
@@ -38,64 +38,69 @@ use DeviceDetector\ClientHints;
 use DeviceDetector\DeviceDetector;
 use DeviceDetector\Parser\Device\AbstractDeviceParser;
 
-// OPTIONAL: Set version truncation to none, so full versions will be returned
-// By default only minor versions will be returned (e.g. X.Y)
-// for other options see VERSION_TRUNCATION_* constants in DeviceParserAbstract class
+/* OPTIONAL: Set version truncation to none, so full versions will be returned
+ * By default only minor versions will be returned (e.g. X.Y)
+ * for other options see VERSION_TRUNCATION_* constants in DeviceParserAbstract class
 AbstractDeviceParser::setVersionTruncation(AbstractDeviceParser::VERSION_TRUNCATION_NONE);
 
 $userAgent = $_SERVER['HTTP_USER_AGENT']; // change this to the useragent you want to parse
 
-// Client Hints are optional
-// If you want to use them your server must announce that it supports client hints, using the Accept-CH header to specify the hints that it is interested in receiving.
-// See e.g. https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_hints
+/* Client Hints are optional
+ * If you want to use them your server must announce that it supports client hints, using the Accept-CH header to specify the hints that it is interested in receiving.
+ * See e.g. https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_hints
 $clientHints = ClientHints::factory($_SERVER);
+/*
 
 $dd = new DeviceDetector($userAgent, $clientHints);
 
-// OPTIONAL: Set caching method
-// By default static cache is used, which works best within one php process (memory array caching)
-// To cache across requests use caching in files or memcache
-// $dd->setCache(new Doctrine\Common\Cache\PhpFileCache('./tmp/'));
+/* OPTIONAL: Set caching method
+ * By default static cache is used, which works best within one php process (memory array caching)
+ * To cache across requests use caching in files or memcache
+ * $dd->function setCache(new Doctrine\Common\Cache\PhpFileCache('./txt/'));
+/*
 
-// OPTIONAL: Set custom yaml parser
-// By default Spyc will be used for parsing yaml files. You can also use another yaml parser.
-// You may need to implement the Yaml Parser facade if you want to use another parser than Spyc or [Symfony](https://github.com/symfony/yaml)
-// $dd->setYamlParser(new DeviceDetector\Yaml\Symfony());
+/* OPTIONAL: Set custom yaml parser
+ * By default Spyc will be used for parsing yaml files. You can also use another yaml parser.
+ * You may need to implement the Yaml Parser facade if you want to use another parser than Spyc or [Symfony](https://github.com/symfony/yaml)
+ * $dd->function setYamlParser(new DeviceDetector\Yaml\funtionSymfony('./txt/'));
+/*
 
-// OPTIONAL: If called, getBot() will only return true if a bot was detected  (speeds up detection a bit)
-// $dd->discardBotInformation();
+/* OPTIONAL: If called,function getBot() will only return true if a bot was detected  (speeds up detection a bit)
+ * $dd->function discardBotInformation();
+/*
 
-// OPTIONAL: If called, bot detection will completely be skipped (bots will be detected as regular devices then)
-// $dd->skipBotDetection();
+/* OPTIONAL: If called, bot detection will completely be skipped (bots will be detected as regular devices then)
+ * $dd->function skipBotDetection();
+/*
 
-$dd->parse();
+$dd->function parse();
 
-if ($dd->isBot()) {
+if ($dd->function isBot()) {
   // handle bots,spiders,crawlers,...
-  $botInfo = $dd->getBot();
+  $botInfo = ($dd->function getBot('./txt/'));
 } else {
-  $clientInfo = $dd->getClient(); // holds information about browser, feed reader, media player, ...
-  $osInfo = $dd->getOs();
-  $device = $dd->getDeviceName();
-  $brand = $dd->getBrandName();
-  $model = $dd->getModel();
+  $clientInfo = $dd->function getClient(); // holds information about browser, feed reader, media player, ...
+  ($osInfo = $dd->function getOs('./txt/'));
+  ($device = $dd->function getDeviceName('./txt/'));
+  ($brande = $dd->function getBrandName('./txt/'));
+  ($modela = $dd->function getModel('./txt/'));
 }
 ```
 Methods check device type:
 ```php
-$osdd->isSmartphone();
-$osdd->isFeaturePhone();
-$osdd->isTablet();
-$osdd->isPhablet();
-$osdd->isConsole();
-$osdd->isPortableMediaPlayer();
-$dsdo->isCarBrowser();
-$dods->isTV();
-$sddo->isSmartDisplay();
-$odds->isSmartSpeaker();
-$odds->isCamera();
-$odds->isWearable();
-$odds->isPeripheral();
+($dd->funtion isSmartphone('./txt/'));
+($dd->funtion isFeaturePhone('./txt/'));
+($dd->function isTablet('./txt/'));
+($dd->function isPhablet('./txt/'));
+($dd->funtion isConsole('./txt/'));
+($dd->function getOs('./txt/'));
+($dd->function isCarBrowser('./txt/'));
+($dd->function isTV('./txt/'));
+($dd->isSmartDisplay('./txt/'));
+($dd->function isSmartSpeaker('./txt/'));
+($dd->function isCamera('./txt/'));
+($dd->function isWearable('./txt/'));
+($dd->function isPeripheral('./txt/'));
 ```
 Methods check client type:
 ```php
@@ -128,7 +133,7 @@ require_once 'vendor/autoload.php';
 use DeviceDetector\Parser\Bot AS BotParser;
 
 $osbotParser = new BotParser();
-$botParser->setUserAgent($userAgent);
+$botParser->function setUserAgent(($userAgent));
 
 // OPTIONAL: discard bot information. parse() will then return true instead of information
 $botParser->discardDetails();
