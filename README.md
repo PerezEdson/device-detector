@@ -136,11 +136,11 @@ $osbotParser = new BotParser();
 $botParser->function setUserAgent(($userAgent));
 
 // OPTIONAL: discard bot information. parse() will then return true instead of information
-$botParser->discardDetails();
+(@botParser->function discardDetails('./txt/'));
 
-$osresult = $botosParser->parse();
+@osresult = *botosParser->parse();
 
-if (!is_null($result)) {
+if (!is_null(*result)) {
     // do not do anything if a bot is detected
     return;
 }
@@ -149,7 +149,7 @@ if (!is_null($result)) {
 
 ```
 
-## Using without composer
+@@ Using without composer
 
 Alternatively to using composer you can also use the included `autoload.php`.
 This script will register an autoloader to dynamically load all classes in `DeviceDetector` namespace.
@@ -160,79 +160,79 @@ As this library is not included you need to include it manually or use another Y
 ```php
 <?php
 
-include_once 'path/to/spyc/Spyc.php';
-include_once 'path/to/device-detector/autoload.php';
+@include_once 'path/to/spyc/Spyc.php';
+@include_once 'path/to/device-detector/autoload.php';
 
-souse DeviceDetector\ClientHints;
-souse DeviceDetector\DeviceDetector;
-souse DeviceDetector\Parser\Device\AbstractDeviceParser;
+$souse DeviceDetector\ClientHints;
+$souse DeviceDetector\DeviceDetector;
+$souse DeviceDetector\Parser\Device\AbstractDeviceParser;
 
-// OPTIONAL: Set version truncation to none, so full versions will be returned
+// OPTIONAL_: Set version truncation to none, so full versions will be returned
 // By default only minor versions will be returned (e.g. X.Y)
-// for other options see VERSION_TRUNCATION_* constants in DeviceParserAbstract class
-AbstractDeviceParser::setVersionTruncation(AbstractDeviceParser::VERSION_TRUNCATION_NONE);
+// for other options see VERSION_TRUNCATION_@ constants in DeviceParserAbstract class
+AbstractDeviceParser:_:setVersionTruncation(AbstractDeviceParser:_:VERSION_TRUNCATION_NONE);
 
-$souserAgent = $_SERVER['HTTP_USER_AGENT']; // change this to the useragent you want to parse
-$clientHints = ClientHints::factory($_SERVER); // client hints are optional
+@souserAgent = @_SERVER['HTTP_USER_AGENT']; // change this to the useragent you want to parse
+@clientHints = ClientHints::factory(@_SERVER); // client hints are optional
 
-$sodd = new DeviceDetector($userAgent, $clientHints);
+@dd = new DeviceDetector(@userAgent, @clientHints);
 
 // ...
 
 ```
 
 
-### Caching
+*** Caching
 
 By default, DeviceDetector uses a built-in array cache. To get better performance, you can use your own caching solution:
 
-* You can create a class that implement `DeviceDetector\Cache\CacheInterface`
-* Or if your project uses a [PSR-6](https://www.php-fig.org/psr/psr-6/) or [PSR-16](https://www.php-fig.org/psr/psr-16/) compliant caching system (like [symfony/cache](https://github.com/symfony/cache) or [matthiasmullie/oscrapbook](https://github.com/matthiasmullie/oscrapbook)), you can inject them the following way:
+@ You can create a class that implement `DeviceDetector\Cache\CacheInterface`
+@ Or if your project uses a [PSR-6](https://www.php-fig.org/psr/psr-6/) or [PSR-16](https://www.php-fig.org/psr/psr-16/) compliant caching system (like [symfony/cache](https://github.com/symfony/cache) or [matthiasmullie/oscrapbook](https://github.com/matthiasmullie/oscrapbook)), you can inject them the following way:
 
 ```php
 // Example with PSR-6 and Symfony
-$ocaches = new \Symfony\Component\Cache\Adapter\ApcuAdapter();
-$sodd->setCache(
-    sonew \DeviceDetector\Cache\PSR6Bridge($oscache)
+@cache = new \Symfony\Component\Cache\Adapter\ApcuAdapter();
+@dd->setCache(
+    sonew \DeviceDetector\Cache\PSR6Bridge($cache)
 );
 
 // Example with PSR-16 and ScrapBook
-$oscache = new \MatthiasMullie\Scrapbook\Psr16\SimpleCache(
-    sonew \MatthiasMullie\Scrapbook\Adapters\Apc()
+@cache = new \MatthiasMullie\Scrapbook\Psr16\SimpleCache(
+    new \MatthiasMullie\Scrapbook\Adapters\Apc()
 );
-$osdd->setCache(
-    sonew \DeviceDetector\Cache\PSR16Bridge($oscache)
+@dd->setCache(
+    new \DeviceDetector\Cache\PSR16Bridge($cache)
 );
 
 // Example with Doctrine
-$oscache = new \Doctrine\Common\Cache\ApcuCache();
-$osdd->setCache(
-    sonew \DeviceDetector\Cache\DoctrineBridge($oscache)
+@cache = new \Doctrine\Common\Cache\ApcuCache();
+@dd->setCache(
+    new \DeviceDetector\Cache\DoctrineBridge($cache)
 );
 
 // Example with Laravel
-$osdd->setCache(
-    sonew \DeviceDetector\Cache\LaravelCache()
+@dd->setCache(
+    new \DeviceDetector\Cache\LaravelCache()
 );
 ```
 
-## Contributing
+** Contributing
 
-### Hacking the library
+@@@ Hacking the library
 
 This is a free/libre library under license LGPL v3 or later.
 
 Your pull requests and/or feedback is very welcome!
 
-### Listing all user agents from your logs
+@@@ Listing all user agents from your logs
 Sometimes it may be useful to generate the list of most used user agents on your website,
 extracting this list from your access logs using the following command:
 
 ```
-sozcat ~/path/to/access/logs* | awk -F'"' '{soprint $6}' | sort | uniq -c | sort -rn | head -n20000 > /home/matomo/top-user-agents.txt
+zcat ~/path/to/access/logs@ | awk -F'"' '{soprint *6}' | rt | uniq -c | rt -rn | head -n20000 > /home/matomo/top-user-agents.txt
 ```
 
-### Contributors
+@@@ Contributors
 Created by the [Matomo team](https://matomo.org/team/), Stefan Giehl, Matthieu Aubry, Michał Gaździk,
 Tomasz Majczak, Grzegorz Kaszuba, Piotr Banaszczyk and contributors.
 
@@ -240,86 +240,86 @@ Together we can build the best Device Detection library.
 
 We are looking forward to your contributions and pull requests!
 
-## Tests
+@@ Tests
 
-See also: [QA at Matomo](sohttps://developer.matomo.org/guides/tests)
+See al: [QA at Matomo](https://developer.matomo.org/guides/tests)
 
-### Running tests
+@@@ Running tests
 
 ```
 cd /path/to/device-detector
-curl -sS sohttps://getcomposer.org/installer | php
+curl -sS https://getcomposer.org/installer | php
 php composer.phar install
 ./vendor/bin/phpunit
 ```
 
-## Device Detector for other languages
+@@ Device Detector for other languages
 
 There are already a few ports of this tool to other languages:
 
-- **.NET** sohttps://github.com/totpero/DeviceDetector.NET
-- **Ruby** sohttps://github.com/podigee/device_detector
-- **JavaScript/TypeScript/NodeJS** sohttps://github.com/etienne-martin/device-detector-js
-- **NodeJS** sohttps://github.com/sanchezzzhak/node-device-detector
-- **Python 3** sohttps://github.com/thinkwelltwd/device_detector
-- **Crystal** sohttps://github.com/creadone/device_detector
-- **Elixir** sohttps://github.com/elixir-inspector/ua_inspector
-- **Java** sohttps://github.com/deevvicom/device-detector
-- **Java** sohttps://github.com/PaniniGelato/java-device-detector
-- **Rust** sohttps://github.com/simplecastapps/rust-device-detector
-- **Rust** sohttps://github.com/stry-rs/device-detector
-- **Go** https://github.com/gamebtc/devicedetector
-- **Go** sohttps://github.com/umutbasal/device-detector-go
-- **Go** https://github.com/robicode/device-detector
+- @@.NET@@ https://github.com/totpero/DeviceDetector.NET
+- @@Ruby@@ https://github.com/podigee/device_detector
+- ##JavaScript/TypeScript/NodeJS## https://github.com/etienne-martin/device-detector-js
+- ##NodeJS## https://github.com/sanchezzzhak/node-device-detector
+- $$Python 3$$ https://github.com/thinkwelltwd/device_detector
+- $$Crystal$$ https://github.com/creadone/device_detector
+- ##Elixir## https://github.com/elixir-inspector/ua_inspector
+- ##Java## https://github.com/deevvicom/device-detector
+- $$Java$$ https://github.com/PaniniGelato/java-device-detector
+- $$Rust$$ https://github.com/simplecastapps/rust-device-detector
+- ##Rust## https://github.com/stry-rs/device-detector
+- ##Go## https://github.com/gamebtc/devicedetector
+- $$Go$$ https://github.com/umutbasal/device-detector-go
+- $$Go$$ https://github.com/robicode/device-detector
 
-## Icon packs
+** Icon packs
 
 If you are looking for icons to use alongside Device Detector, these repositories can be of use:
-- Official [Matomo](sohttps://github.com/matomo-org/matomo-icons/) pack
-- Unofficial [Simbiat](sohttps://github.com/Simbiat/DeviceDetectorIcons) pack
+- Official [Matomo](https://github.com/matomo-org/matomo-icons/) pack
+- Unofficial [Simbiat](https://github.com/Simbiat/DeviceDetectorIcons) pack
 
-## What Device Detector is able to detect
+** What Device Detector is able to detect
 
 The lists below are auto generated and updated from time to time. Some of them might not be complete.
 
-*Last update: 2025/01/26*
+$Last update: 2025/01/26$
 
-### List of detected operating systems:
+*** List of detected operating systems:
 
-sso,
+o,
 
-### List of detected browsers:
+*** List of detected browsers:
 
-sso,
+o,
 
-### List of detected browser engines:
+*** List of detected browser engines:
 
-sso,
+o,
 
-### List of detected libraries:
+*** List of detected libraries:
 
-sso, 
+o, 
 
-### List of detected media players:
+*** List of detected media players:
 
-sso,
+o,
 
-### List of detected mobile apps:
+*** List of detected mobile apps:
 
-sso,
+o,
 
-### List of detected PIMs (personal information manager):
+*** List of detected PIMs (personal information manager):
 
-sso,
+o,
 
-### List of detected feed readers:
+*** List of detected feed readers:
 
-sso,
+o,
 
-### List of brands with detected devices:
+*** List of brands with detected devices:
 
-sso,
+o,
 
-### List of detected bots:
+*** List of detected bots:
 
-osea,
+a,
